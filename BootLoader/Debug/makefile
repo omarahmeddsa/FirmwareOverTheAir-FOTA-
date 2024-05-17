@@ -10,6 +10,7 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
+"./Bootloader.obj" \
 "./UART_Driver.obj" \
 "./main.obj" \
 "./tm4c123gh6pm_startup_ccs.obj" \
@@ -144,8 +145,8 @@ BootLoader.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)
-	-$(RM) "UART_Driver.obj" "main.obj" "tm4c123gh6pm_startup_ccs.obj" 
-	-$(RM) "UART_Driver.d" "main.d" "tm4c123gh6pm_startup_ccs.d" 
+	-$(RM) "Bootloader.obj" "UART_Driver.obj" "main.obj" "tm4c123gh6pm_startup_ccs.obj" 
+	-$(RM) "Bootloader.d" "UART_Driver.d" "main.d" "tm4c123gh6pm_startup_ccs.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

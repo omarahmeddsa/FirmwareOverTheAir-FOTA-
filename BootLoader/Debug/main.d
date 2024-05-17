@@ -19,6 +19,9 @@ main.obj: E:/Tivaware/driverlib/gpio.h
 main.obj: E:/Tivaware/driverlib/pin_map.h
 main.obj: E:/Tivaware/driverlib/uart.h
 main.obj: ../UART_Driver.h
+main.obj: ../UART_Driver.h
+main.obj: ../Bootloader.h
+main.obj: E:/Tivaware/driverlib/crc.h
 
 ../main.c:
 
@@ -57,4 +60,10 @@ E:/Tivaware/driverlib/pin_map.h:
 E:/Tivaware/driverlib/uart.h:
 
 ../UART_Driver.h:
+
+../UART_Driver.h:
+
+../Bootloader.h:
+
+E:/Tivaware/driverlib/crc.h:
 

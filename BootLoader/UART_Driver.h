@@ -7,6 +7,15 @@
 
 #ifndef UART_DRIVER_H_
 #define UART_DRIVER_H_
+#include <stdint.h>
+#include <stdbool.h>
+#include "inc/hw_memmap.h"
+#include "inc/hw_types.h"
+#include "driverlib/sysctl.h"
+#include "driverlib/gpio.h"
+#include "driverlib/pin_map.h"
+#include "driverlib/uart.h"
+#include "UART_Driver.h"
 /*******************************************
  * Macros
  ******************************************/

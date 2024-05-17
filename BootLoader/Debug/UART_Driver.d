@@ -1,6 +1,7 @@
 # FIXED
 
 UART_Driver.obj: ../UART_Driver.c
+UART_Driver.obj: ../UART_Driver.h
 UART_Driver.obj: C:/ti/ccs1260/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/stdint.h
 UART_Driver.obj: C:/ti/ccs1260/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/_ti_config.h
 UART_Driver.obj: C:/ti/ccs1260/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/linkage.h
@@ -21,6 +22,8 @@ UART_Driver.obj: E:/Tivaware/driverlib/uart.h
 UART_Driver.obj: ../UART_Driver.h
 
 ../UART_Driver.c:
+
+../UART_Driver.h:
 
 C:/ti/ccs1260/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/stdint.h:
 

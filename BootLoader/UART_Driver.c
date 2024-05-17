@@ -1,21 +1,13 @@
- /* Module Name : UART_Driver.c
+/* Module Name : UART_Driver.c
  *  Desc : Init UART and Recive and transmit
  *  Created on: May 15, 2024
  *      Author: omar
  ****************************************/
-#include <stdint.h>
-#include <stdbool.h>
-#include "inc/hw_memmap.h"
-#include "inc/hw_types.h"
-#include "driverlib/sysctl.h"
-#include "driverlib/gpio.h"
-#include "driverlib/pin_map.h"
-#include "driverlib/uart.h"
-#include "UART_Driver.h"
-void UART0_Init (void ){
 
-    // Set the clock to 80MHz
-    SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
+#include "UART_Driver.h"
+
+
+void UART0_Init (void ){
 
     // Enable UART0 and GPIO port A
     SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
@@ -57,4 +49,18 @@ void UART_Rec_Str (uint8_t * Str, uint32_t Copy_UARTBase){
     }
 
     Str [Index] = '\0';
+}
+
+void UART_Rec_Sring_Size (uint8_t * Str, uint32_t Copy_UARTBase ){
+    uint32_t Index = 0 ;
+
+    // Recive the Data length in the first Element of the array
+    Str [Index] = UARTCharGet(Copy_UARTBase);
+
+    // loop till the data length
+    while (Index < Str [Index]){
+        Index++ ;
+        Str [Index] = UARTCharGet(Copy_UARTBase);
+    }
+
 }
