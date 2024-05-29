@@ -22,6 +22,7 @@ main.obj: ../UART_Driver.h
 main.obj: ../UART_Driver.h
 main.obj: ../Bootloader.h
 main.obj: E:/Tivaware/driverlib/crc.h
+main.obj: E:/Tivaware/driverlib/flash.h
 
 ../main.c:
 
@@ -66,4 +67,6 @@ E:/Tivaware/driverlib/uart.h:
 ../Bootloader.h:
 
 E:/Tivaware/driverlib/crc.h:
+
+E:/Tivaware/driverlib/flash.h:
 

@@ -22,6 +22,7 @@ Bootloader.obj: E:/Tivaware/driverlib/uart.h
 Bootloader.obj: ../UART_Driver.h
 Bootloader.obj: ../UART_Driver.h
 Bootloader.obj: E:/Tivaware/driverlib/crc.h
+Bootloader.obj: E:/Tivaware/driverlib/flash.h
 
 ../Bootloader.c:
 
@@ -66,4 +67,6 @@ E:/Tivaware/driverlib/uart.h:
 ../UART_Driver.h:
 
 E:/Tivaware/driverlib/crc.h:
+
+E:/Tivaware/driverlib/flash.h:
 

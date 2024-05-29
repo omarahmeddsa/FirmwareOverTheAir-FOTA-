@@ -18,6 +18,7 @@
 #include "driverlib/uart.h"
 #include "UART_Driver.h"
 #include "driverlib/crc.h"
+#include "driverlib/flash.h"
 /*************************************
  * Enums
  ************************************/
@@ -26,6 +27,7 @@ typedef enum {
     BL_Nok
 
 }BL_ACK;
+
 
 typedef enum {
     Data_Len,
@@ -42,9 +44,50 @@ typedef enum {
     READ_SECTOR_STATUS,
     CHANGE_ROP_Level
 }BL_Index;
+
+typedef struct
+{
+    volatile uint32_t CPUID;               // CPUID Base Register
+    volatile uint32_t ICSR;                // Interrupt Control and State Register
+    volatile uint32_t VTOR;                // Vector Table Offset Register
+    volatile uint32_t AIRCR;               // Application Interrupt and Reset Control Register
+    volatile uint32_t SCR;                 // System Control Register
+    volatile uint32_t CCR;                 // Configuration and Control Register
+    volatile uint8_t  SHP[12];             // System Handlers Priority Registers
+    volatile uint32_t SHCSR;               // System Handler Control and State Register
+    volatile uint32_t CFSR;                // Configurable Fault Status Register
+    volatile uint32_t HFSR;                // HardFault Status Register
+    volatile uint32_t DFSR;                // Debug Fault Status Register
+    volatile uint32_t MMFAR;               // MemManage Fault Address Register
+    volatile uint32_t BFAR;                // BusFault Address Register
+    volatile uint32_t AFSR;                // Auxiliary Fault Status Register
+    volatile uint32_t PFR[2];              // Processor Feature Register
+    volatile uint32_t DFR;                 // Debug Feature Register
+    volatile uint32_t ADR;                 // Auxiliary Feature Register
+    volatile uint32_t MMFR[4];             // Memory Model Feature Register
+    volatile uint32_t ISAR[5];             // Instruction Set Attributes Register
+    volatile uint32_t RESERVED0[5];        // Reserved
+    volatile uint32_t CPACR;               // Coprocessor Access Control Register
+} SCB_Type;
+
+#define SCB_BASE            (0xE000ED00UL)                            // System Control Block Base Address
+#define SCB                 ((SCB_Type *) SCB_BASE)
+
+#define Enable_Exceptions()    __asm(" CPSIE I ")
+/* Disable Exceptions ... This Macro disable IRQ interrupts, Programmable Systems Exceptions and Faults by setting the I-bit in the PRIMASK. */
+#define Disable_Exceptions()   __asm(" CPSID I ")
+
+#define Load_Start_Address()  __asm(" movw r0 , #0x00001000")
+
+#define Load_MSP()           __asm(" ldr sp , [r0]")
+
+#define Load_VTable()       __asm(" ldr r0 , [r0, #4]")
+
+#define Branching()             __asm (" bx r0 ")
 /************************************
  * Macros
  ***********************************/
+#define Programmed_Bytes    4
 #define NULL             (void *) (0)
 #define Debugging_UART   UART0_BASE
 #define BL_Fetch_UART          UART0_BASE
@@ -65,6 +108,8 @@ typedef enum {
 #define CBL_OTP_READ_CMD             0x20
 /* Change Read Out Protection Level */
 #define CBL_CHANGE_ROP_Level_CMD     0x21
+#define BootloadorJmp                0x22
+
 /***Version ****/
 #define BL_Vendor_ID        100
 #define BL_Version_Major    1
@@ -73,6 +118,8 @@ typedef enum {
 
 #define BL_SendACK          0xAB
 #define BL_SendNACK         0xCD
+#define App_Add             0x00001000
+#define Total_Num_Sectors   255
 /***********************************
  * prototypes
  **********************************/
@@ -89,4 +136,5 @@ void BL_Send_ACK (uint8_t   );
 void BL_Send_NACK ( void );
 void BL_Get_Help ();
 void UART_Rec_Sring_Size (uint8_t * , uint32_t  );
+static void Bootloador_Jmp (void);
 #endif /* BOOTLOADER_H_ */
