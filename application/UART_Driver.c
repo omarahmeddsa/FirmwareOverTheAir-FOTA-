@@ -7,8 +7,6 @@
 #include "UART_Driver.h"
 
 
-
-
 void UART0_Init (void ){
 
     // Enable UART0 and GPIO port A
@@ -60,40 +58,9 @@ void UART_Rec_Sring_Size (uint8_t * Str, uint32_t Copy_UARTBase ){
     Str [Index] = UARTCharGet(Copy_UARTBase);
 
     // loop till the data length
-    while ((Index <= Str [0])|| (Str [Index] != '#')){
+    while (Index < Str [Index]){
         Index++ ;
         Str [Index] = UARTCharGet(Copy_UARTBase);
     }
 
 }
-
-
-void UART0_Interrupt_Int (void){
-
-    // Enable UART0 and GPIO port A
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
-
-    // Configure GPIO pins for UART0
-    GPIOPinConfigure(GPIO_PA0_U0RX);
-    GPIOPinConfigure(GPIO_PA1_U0TX);
-    GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
-
-    // Configure UART0 with a baud rate of 115200, 8 data bits, 1 stop bit, no parity
-    UARTConfigSetExpClk(UART0_BASE, SysCtlClockGet(), UART0_BaudRate,
-                        (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
-                                UART_CONFIG_PAR_NONE));
-
-    // Enable UART0
-    UARTEnable(UART0_BASE);
-    //Enable receiving Data in FIFO
-    UARTFIFOEnable(UART0_BASE);
-    //Enable Interrupt
-    UARTIntEnable(UART0_BASE, UART_INT_RX|UART_INT_RT);
-
-
-
-
-}
-
-

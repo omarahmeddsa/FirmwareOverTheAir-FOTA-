@@ -20,8 +20,6 @@ UART_Driver.obj: E:/Tivaware/driverlib/gpio.h
 UART_Driver.obj: E:/Tivaware/driverlib/pin_map.h
 UART_Driver.obj: E:/Tivaware/driverlib/uart.h
 UART_Driver.obj: ../UART_Driver.h
-UART_Driver.obj: E:/Tivaware/inc/hw_ints.h
-UART_Driver.obj: E:/Tivaware/driverlib/interrupt.h
 
 ../UART_Driver.c:
 
@@ -62,8 +60,4 @@ E:/Tivaware/driverlib/pin_map.h:
 E:/Tivaware/driverlib/uart.h:
 
 ../UART_Driver.h:
-
-E:/Tivaware/inc/hw_ints.h:
-
-E:/Tivaware/driverlib/interrupt.h:
 

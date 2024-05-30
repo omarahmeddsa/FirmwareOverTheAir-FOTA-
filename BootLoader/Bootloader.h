@@ -137,4 +137,6 @@ void BL_Send_NACK ( void );
 void BL_Get_Help ();
 void UART_Rec_Sring_Size (uint8_t * , uint32_t  );
 static void Bootloador_Jmp (void);
+void Bootloador_Flash_Erase (void);
+void Bootloador_Write (uint32_t * PTR_Program );
 #endif /* BOOTLOADER_H_ */

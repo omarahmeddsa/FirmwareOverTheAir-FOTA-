@@ -7,7 +7,6 @@
 
 #ifndef UART_DRIVER_H_
 #define UART_DRIVER_H_
-
 #include <stdint.h>
 #include <stdbool.h>
 #include "inc/hw_memmap.h"
@@ -17,9 +16,6 @@
 #include "driverlib/pin_map.h"
 #include "driverlib/uart.h"
 #include "UART_Driver.h"
-#include "inc/hw_ints.h"
-#include "driverlib/interrupt.h"
-
 /*******************************************
  * Macros
  ******************************************/
@@ -31,7 +27,4 @@
 void UART0_Init (void);
 void UART_Send_Str (uint8_t * , uint32_t );
 void UART_Rec_Str (uint8_t * , uint32_t );
-
-
-
 #endif /* UART_DRIVER_H_ */

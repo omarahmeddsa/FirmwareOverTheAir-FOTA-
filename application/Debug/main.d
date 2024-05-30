@@ -20,10 +20,6 @@ main.obj: E:/Tivaware/driverlib/pin_map.h
 main.obj: E:/Tivaware/driverlib/uart.h
 main.obj: ../UART_Driver.h
 main.obj: ../UART_Driver.h
-main.obj: E:/Tivaware/inc/hw_ints.h
-main.obj: E:/Tivaware/driverlib/interrupt.h
-main.obj: ../Bootloader.h
-main.obj: E:/Tivaware/driverlib/crc.h
 main.obj: E:/Tivaware/driverlib/flash.h
 
 ../main.c:
@@ -65,14 +61,6 @@ E:/Tivaware/driverlib/uart.h:
 ../UART_Driver.h:
 
 ../UART_Driver.h:
-
-E:/Tivaware/inc/hw_ints.h:
-
-E:/Tivaware/driverlib/interrupt.h:
-
-../Bootloader.h:
-
-E:/Tivaware/driverlib/crc.h:
 
 E:/Tivaware/driverlib/flash.h:
 

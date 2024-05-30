@@ -1,0 +1,6 @@
+"./UART_Driver.obj"
+"./main.obj"
+"./tm4c123gh6pm_startup_ccs.obj"
+"E:/Tivaware/driverlib/ccs/Debug/driverlib.lib"
+"../tm4c123gh6pm.cmd"
+-llibc.a
